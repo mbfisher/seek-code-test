@@ -8,9 +8,8 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/checkout", (req, res) => {
-  const items = req.body.items;
-
-  const checkout = new Checkout();
+  const { customer, items } = req.body;
+  const checkout = new Checkout(customer);
   checkout.addAll(items);
 
   return res.json(checkout);

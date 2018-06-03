@@ -1,8 +1,9 @@
 export default class Checkout {
   items = [];
 
-  constructor() {
+  constructor(customer) {
     this.id = new Date().getTime();
+    this.customer = customer;
   }
 
   addAll(items) {
