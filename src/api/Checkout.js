@@ -12,7 +12,7 @@ export default class Checkout {
 
   total() {
     const total = this.customer.total(this.items);
-    console.info({ customer: this.customer.name, items: this.items, total });
+    // console.info({ customer: this.customer.name, items: this.items, total });
     return total;
   }
 }

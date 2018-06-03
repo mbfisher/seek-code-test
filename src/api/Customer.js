@@ -15,10 +15,13 @@ export default class Customer {
   }
 
   total(items) {
-    return _(items)
-      .countBy()
-      .mapValues((numItems, type) => this.rules[type](numItems))
-      .values()
-      .sum();
+    return Number(
+      _(items)
+        .countBy()
+        .mapValues((numItems, type) => this.rules[type](numItems))
+        .values()
+        .sum()
+        .toFixed(2)
+    );
   }
 }
