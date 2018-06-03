@@ -8,8 +8,11 @@ export default class Checkout {
 
   addAll(items) {
     this.items = items || [];
-    this.update();
   }
 
-  update() {}
+  total() {
+    const total = this.customer.total(this.items);
+    console.info({ customer: this.customer.name, items: this.items, total });
+    return total;
+  }
 }
