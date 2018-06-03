@@ -8,5 +8,8 @@ describe("POST /checkout", () => {
     expect(response.headers["content-type"]).toEqual(
       "application/json; charset=utf-8"
     );
+
+    console.info(response.body);
+    expect(response.body.items).toEqual([]);
   });
 });
