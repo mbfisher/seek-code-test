@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 export const fixedPrice = price => numItems => numItems * price;
 
 export const nForM = (n, m, price) => numItems =>

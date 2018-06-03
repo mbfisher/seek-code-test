@@ -1,5 +1,5 @@
-import Checkout from "../Checkout";
-import Customer from "../Customer";
+import Checkout from "./Checkout";
+import Customer from "./Customer";
 import _ from "lodash";
 
 describe("Checkout", () => {
