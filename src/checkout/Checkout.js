@@ -1,3 +1,6 @@
+/**
+ * Simple facade around a Customer object, which contains the pricing rules.
+ */
 export default class Checkout {
   items = [];
 
@@ -11,8 +14,6 @@ export default class Checkout {
   }
 
   total() {
-    const total = this.customer.total(this.items);
-    // console.info({ customer: this.customer.name, items: this.items, total });
-    return total;
+    return this.customer.total(this.items);
   }
 }

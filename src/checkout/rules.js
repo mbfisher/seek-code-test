@@ -1,8 +1,20 @@
+/* * * * * * * * Rule Helpers * * * * * * * */
+
+/**
+ * Create a function that computes a fixed price.
+ */
 export const fixedPrice = price => numItems => numItems * price;
 
+/**
+ * Create a function that computes a "3 for the price of 2" deal.
+ */
 export const nForM = (n, m, price) => numItems =>
   numItems * price - Math.floor(numItems / n) * (n - m) * price;
 
+/**
+ * Create a function that computes a bulk discount deal where a discounted
+ * price is used if the number of items is above a threshold.
+ */
 export const bulkDiscount = (
   threshold,
   discountedPrice,
@@ -10,12 +22,19 @@ export const bulkDiscount = (
 ) => numItems =>
   numItems >= threshold ? numItems * discountedPrice : numItems * defaultPrice;
 
+/* * * * * * * * Rule Definitions * * * * * * */
+
 const defaults = {
   classic: 269.99,
   standout: 322.99,
   premium: 394.99
 };
 
+/*
+ * Define default rules and override item types for each customer.
+ * `loadRules` will provide the default rules for types that aren't
+ * overridden.
+ */
 const rules = {
   default: {
     classic: fixedPrice(defaults.classic),
@@ -38,6 +57,7 @@ const rules = {
   }
 };
 
+// Utility function to expose rules without exposing simplistic object interface.
 const loadRules = customer => ({
   ...rules.default,
   ...rules[customer]

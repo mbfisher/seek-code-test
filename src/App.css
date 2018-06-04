@@ -1,1 +1,19 @@
 @import "~bulma/css/bulma.min.css";
+
+.checkout {
+  width: 50%;
+  margin: 5% auto;
+}
+
+.title {
+  text-align: center;
+}
+
+.field-label {
+  margin-right: 0.75rem;
+}
+
+.field-body {
+  flex-grow: 1;
+  margin-left: 0.75rem;
+}
