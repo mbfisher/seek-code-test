@@ -72,7 +72,7 @@ class App extends Component {
             </Control>
           </FieldBody>
         </Field>
-        {["classic", "standout", "premium"].map(itemType => (
+        {["classic", "standout", "premium", "membership"].map(itemType => (
           <Field key={itemType} isHorizontal>
             <FieldLabel isNormal>
               <Label>
