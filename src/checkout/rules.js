@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 /* * * * * * * * Rule Helpers * * * * * * * */
 
 /**
@@ -22,12 +24,21 @@ export const bulkDiscount = (
 ) => numItems =>
   numItems >= threshold ? numItems * discountedPrice : numItems * defaultPrice;
 
+export const introductionOffer = (threshold, discountedPrice, defaultPrice) => (
+  numItems,
+  items
+) =>
+  Object.values(items).reduce((total, n) => total + n, 0) >= threshold
+    ? numItems * discountedPrice
+    : numItems * defaultPrice;
+
 /* * * * * * * * Rule Definitions * * * * * * */
 
 const defaults = {
   classic: 269.99,
   standout: 322.99,
-  premium: 394.99
+  premium: 394.99,
+  membership: 99
 };
 
 /*
@@ -39,7 +50,8 @@ const rules = {
   default: {
     classic: fixedPrice(defaults.classic),
     standout: fixedPrice(defaults.standout),
-    premium: fixedPrice(defaults.premium)
+    premium: fixedPrice(defaults.premium),
+    membership: introductionOffer(10, 0, defaults.membership)
   },
   unilever: {
     classic: nForM(3, 2, defaults.classic)

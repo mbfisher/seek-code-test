@@ -56,6 +56,31 @@ describe("Checkout", () => {
         })
       ).toEqual(4349.87));
   });
+
+  describe("jora local membership", () => {
+    test("fixed price", () => {
+      expect(
+        getTotal({
+          customer: "default",
+          items: {
+            membership: 1
+          }
+        })
+      ).toEqual(99);
+    });
+
+    test("freebie", () => {
+      expect(
+        getTotal({
+          customer: "default",
+          items: {
+            classic: 10,
+            membership: 1
+          }
+        })
+      ).toEqual(2699.9);
+    });
+  });
 });
 
 const getTotal = ({ customer, items }) => {

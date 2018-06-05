@@ -26,12 +26,13 @@ export default class Customer {
    * Apply customer specific pricing rules to compute a total.
    */
   total(items) {
+    // Get an object of item type to frequency.
+    const itemSpec = _.countBy(items);
+
     return Number(
-      _(items)
-        // Get an object of item type to frequency.
-        .countBy()
+      _(itemSpec)
         // Apply each rule to get an object of item type to sub-total.
-        .mapValues((numItems, type) => this.rules[type](numItems))
+        .mapValues((numItems, type) => this.rules[type](numItems, itemSpec))
         // Take the values,
         .values()
         // sum them,
